@@ -19,13 +19,14 @@ This project implements an **ETL (Extract, Transform, Load) pipeline** to proces
     3-Store Extracted Data: The extracted image data is stored as a list of tuples (filename, image)
    
 3. **Transform**:
+   
   1-Resampling:
    
-     - The resample_image() function adjusts the image spacing to [0.5, 0.5, 0.5] mm/px.
+   - The resample_image() function adjusts the image spacing to [0.5, 0.5, 0.5] mm/px.
        
-     - It calculates the new image size based on the original spacing and size.
+   - It calculates the new image size based on the original spacing and size.
        
-     - Uses SimpleITK.Resample() to perform the resampling.
+   - Uses SimpleITK.Resample() to perform the resampling.
 
   2-NIfTI Conversion:
   
