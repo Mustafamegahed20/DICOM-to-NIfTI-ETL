@@ -13,8 +13,5 @@ COPY . .
 
 
 
-# Create the input and output directories
-RUN mkdir -p ${INPUT_FOLDER} ${OUTPUT_FOLDER}
-
 # Run the pipeline when the container starts
 CMD ["python", "scripts/run_pipeline.py"]
