@@ -32,17 +32,19 @@ This project implements an **ETL (Extract, Transform, Load) pipeline** to proces
   
       - The convert_to_nifti() function converts the SimpleITK image to a NIfTI format using nibabel
 
-3. **Normalize**: Intensity Scaling:
+3. **Normalize**:
+  
+     Intensity Scaling:
 
-   - The pixel values are scaled using the formula:
-     
-      normalized_array= array−min(array)\max(array)−min(array)
-     
-   - This ensures all pixel values are in the range [0, 1].
+      - The pixel values are scaled using the formula:
+        
+         normalized_array= array−min(array)\max(array)−min(array)
+        
+      - This ensures all pixel values are in the range [0, 1].
 
    Copy Metadata:
    
-   - The metadata (e.g., spacing, origin, direction) from the original image is copied to the normalized image.
+      - The metadata (e.g., spacing, origin, direction) from the original image is copied to the normalized image.
 
 4. **Load**: The processed image is saved as a NIfTI file using SimpleITK.WriteImage().
 
