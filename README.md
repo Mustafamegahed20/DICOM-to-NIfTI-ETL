@@ -10,29 +10,40 @@
 This project implements an **ETL (Extract, Transform, Load) pipeline** to process DICOM images from the **LUNA16 dataset**, convert them into NIfTI format, apply isotropic resampling (0.5 mm/px spacing), normalize the image intensities, and store the processed data in a structured folder system. The pipeline is containerized using **Docker** and uses **DVC (Data Version Control)** for dataset versioning.
 
 ### Pipeline Steps:
-1. **Extract**: 
+1. **Extract**:
+   
     1-List .mhd Files: The script lists all .mhd files in the dicom_data/ folder.
+   
     2-Read .mhd and .raw Files: For each .mhd file, it reads the associated .raw file using SimpleITK.ReadImage().
+   
     3-Store Extracted Data: The extracted image data is stored as a list of tuples (filename, image)
+   
 3. **Transform**:
   1-Resampling:
+   
      - The resample_image() function adjusts the image spacing to [0.5, 0.5, 0.5] mm/px.
+       
      - It calculates the new image size based on the original spacing and size.
+       
      - Uses SimpleITK.Resample() to perform the resampling.
 
   2-NIfTI Conversion:
-     - The convert_to_nifti() function converts the SimpleITK image to a NIfTI format using nibabel
+  
+- The convert_to_nifti() function converts the SimpleITK image to a NIfTI format using nibabel
 
 5. **Normalize**: Intensity Scaling:
 
    - The pixel values are scaled using the formula:
-           normalized_array= array−min(array)\max(array)−min(array)
+     
+      normalized_array= array−min(array)\max(array)−min(array)
+     
    - This ensures all pixel values are in the range [0, 1].
 
    Copy Metadata:
+   
    - The metadata (e.g., spacing, origin, direction) from the original image is copied to the normalized image.
 
-6. **Load**: The processed image is saved as a NIfTI file using SimpleITK.WriteImage().
+7. **Load**: The processed image is saved as a NIfTI file using SimpleITK.WriteImage().
 
 ---
 
