@@ -20,19 +20,19 @@ This project implements an **ETL (Extract, Transform, Load) pipeline** to proces
    
 3. **Transform**:
    
-  1-Resampling:
-   
-   - The resample_image() function adjusts the image spacing to [0.5, 0.5, 0.5] mm/px.
-       
-   - It calculates the new image size based on the original spacing and size.
-       
-   - Uses SimpleITK.Resample() to perform the resampling.
-
-  2-NIfTI Conversion:
+      1-Resampling:
+      
+      - The resample_image() function adjusts the image spacing to [0.5, 0.5, 0.5] mm/px.
+          
+      - It calculates the new image size based on the original spacing and size.
+          
+      - Uses SimpleITK.Resample() to perform the resampling.
+      
+      2-NIfTI Conversion:
   
-- The convert_to_nifti() function converts the SimpleITK image to a NIfTI format using nibabel
+      - The convert_to_nifti() function converts the SimpleITK image to a NIfTI format using nibabel
 
-5. **Normalize**: Intensity Scaling:
+3. **Normalize**: Intensity Scaling:
 
    - The pixel values are scaled using the formula:
      
@@ -44,7 +44,7 @@ This project implements an **ETL (Extract, Transform, Load) pipeline** to proces
    
    - The metadata (e.g., spacing, origin, direction) from the original image is copied to the normalized image.
 
-7. **Load**: The processed image is saved as a NIfTI file using SimpleITK.WriteImage().
+4. **Load**: The processed image is saved as a NIfTI file using SimpleITK.WriteImage().
 
 ---
 
