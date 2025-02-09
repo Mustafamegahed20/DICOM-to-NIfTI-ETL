@@ -72,7 +72,9 @@ dvc remote add -d local_storage dvc_storage
 
 ## Usage Instructions
 1. Run the Pipeline
-Note >> Download sample from the datasets before running and add it on dicom data folder >> i don't add it bec i was very large to push it 
+   
+Note >> Download sample from the datasets before running and add it on dicom data folder >> i don't add it bec it was very large to push it
+
 To run the ETL pipeline:
 ``` bash
 python scripts/run_pipeline.py
