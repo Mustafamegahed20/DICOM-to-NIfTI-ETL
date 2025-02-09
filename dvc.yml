@@ -1,0 +1,7 @@
+stages:
+  process_data:
+    cmd: python scripts/run_pipeline.py
+    deps:
+      - dicom_data/
+    outs:
+      - processed_data/

@@ -1,0 +1,6 @@
+outs:
+- md5: 1aad236b26e0912777e60eb814dbfeb1.dir
+  size: 353371341
+  nfiles: 6
+  hash: md5
+  path: dicom_data
