@@ -1,26 +1,20 @@
+# Use an official Python runtime as the base image
 FROM python:3.9-slim
 
+# Set the working directory in the container
 WORKDIR /app
 
-
-# Install system dependencies (git, curl, etc.)
-RUN apt-get update && apt-get install -y git curl \
-    && rm -rf /var/lib/apt/lists/*
-
-
-# Install dependencies
+# Copy the requirements file and install dependencies
 COPY requirements.txt .
-RUN pip install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy scripts and data
+# Copy the entire project into the container
 COPY . .
 
-ENV PYTHONPATH="/app:${PYTHONPATH}"
 
-# Make dvc_setup.sh executable
-RUN chmod +x scripts/dvc_setup.sh
-RUN chmod +x scripts/run_pipeline.py
 
-# Run the DVC setup script
+# Create the input and output directories
+RUN mkdir -p ${INPUT_FOLDER} ${OUTPUT_FOLDER}
+
+# Run the pipeline when the container starts
 CMD ["python", "scripts/run_pipeline.py"]
-

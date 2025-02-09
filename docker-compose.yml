@@ -1,0 +1,8 @@
+version: "3.8"
+services:
+  dicom_pipeline:
+    build: .
+    volumes:
+      - ./dicom_data:/app/dicom_data
+      - ./processed_data:/app/processed_data
+    
